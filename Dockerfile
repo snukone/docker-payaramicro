@@ -1,6 +1,6 @@
 FROM java:8-jdk-alpine
 
-ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/Payara+4.1.1.164/payara-micro-4.1.1.164.jar
+ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/Payara+4.1.1.171.0.1/payara-micro-4.1.1.171.0.1.jar
 ENV PKG_FILE_NAME payara-micro.jar
 ENV PAYARA_PATH /opt/payara
 
