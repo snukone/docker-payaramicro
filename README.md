@@ -49,12 +49,12 @@ The docker image already contains `/opt/payara/deployments` directory, which can
 The following command will run Payara Micro docker container and will deploy applications that exist in the directory `~/payara-micro/applications` on the host file-system:
 
 ```
-docker docker run -p 8080:8080 \
+docker run -p 8080:8080 \
  -v ~/payara-micro/applications:/opt/payara/deployments payara/micro \
  java -jar /opt/payara/payara-micro.jar --deploymentDir /opt/payara/deployments
 ```
 
-If you would like to run a specific application within the directory, you can use `--deploy` option followed by path to the application file.
+To run a specific application within the directory, you can use `--deploy` option followed by path to the application file.
 
 ### Build a new docker image to run your application
 
@@ -63,7 +63,7 @@ You can extend the docker image to add your deployables into the `/opt/payara/de
 The following example Dockerfile will build an image that deploys `myapplication.war` when Payara Micro is started with the above `--deploymentDir` option:
 
 ```
-FROM payara/server-full:162
+FROM payara/micro
 
 COPY myapplication.war /opt/payara/deployments
 ```
