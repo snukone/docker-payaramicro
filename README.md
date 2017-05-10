@@ -63,7 +63,7 @@ You can extend the docker image to add your deployables into the `/opt/payara/de
 The following example Dockerfile will build an image that deploys `myapplication.war` when Payara Micro is started with the above `--deploymentDir` option:
 
 ```
-FROM payara/server-full:162
+FROM payara/micro
 
 COPY myapplication.war /opt/payara/deployments
 ```
