@@ -15,7 +15,7 @@ Updated repository for Payara Dockerfiles. This repository is for [Payara Micro]
 To start the docker container and run Payara Micro:
 
 ```
-docker run -p 8080:8080 payara/micro java -jar /opt/payara/payara-micro.jar
+docker run -p 8080:8080 payara/micro
 ```
 
 It runs Payara Micro without any applications, therefore accessing the HTTP server bound to port 8080 will just return HTTP code 404 - Not Found.
@@ -50,34 +50,39 @@ The following command will run Payara Micro docker container and will deploy app
 
 ```
 docker run -p 8080:8080 \
- -v ~/payara-micro/applications:/opt/payara/deployments payara/micro \
- java -jar /opt/payara/payara-micro.jar --deploymentDir /opt/payara/deployments
+ -v ~/payara-micro/applications:/opt/payara/deployments payara/micro
 ```
 
-To run a specific application within the directory, you can use `--deploy` option followed by path to the application file.
+To run a specific application within the directory, you can modify the default entry point and use `--deploy` option followed by path to the application file:
+
+```
+docker run -p 8080:8080 \
+ -v ~/payara-micro/applications:/opt/payara/deployments \
+ payara/micro \
+ --deploy /opt/payara/deployments/myapplication.war
+```
 
 ### Build a new docker image to run your application
 
 You can extend the docker image to add your deployables into the `/opt/payara/deployments` directory and run the resulting docker image instead of the original one.
 
-The following example Dockerfile will build an image that deploys `myapplication.war` when Payara Micro is started with the above `--deploymentDir` option:
+The following example Dockerfile will build an image that deploys `myapplication.war` when Payara Micro is started:
 
 ```
 FROM payara/micro
 
-COPY myapplication.war /opt/payara/deployments
+COPY myapplication.war $DEPLOY_DIR
 ```
 
 ### Run from a maven repository
 
-If your application is already in a maven repository, you can run it with Payara Micro in the docker very easily. Payara Micro knows how to download an artifact from a maven repository and run it directly.
+If your application is already in a maven repository, you can run it with Payara Micro in the docker very easily. Payara Micro knows how to download an artifact from a maven repository and run it directly. You just need to provide an alternative entry point
 
 The following command runs Payara Micro in the docker image and runs an application stored in a maven repository. The application group is `fish.payara.examples`, artifact name is `my-application`, and version is `1.0-SNAPSHOT`. The maven repository is available on host `172.17.0.10`:
 
 ```
 docker docker run -p 8080:8080 payara/micro \
- java -jar /opt/payara/payara-micro.jar \
- --deployFromGAV "fish.payara.examples,my-application,1.0-SNAPSHOT" \
+ --deployFromGAV "fish.payara.examples:my-application:1.0-SNAPSHOT" \
  --additionalRepository https://172.17.0.10/content/repositories/snapshots
 ```
 
