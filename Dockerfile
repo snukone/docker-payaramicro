@@ -9,8 +9,8 @@ RUN   apk update \
  adduser -D -h $PAYARA_PATH payara && echo payara:payara | chpasswd && \
  chown -R payara:payara /opt
 
-ENV PAYARA_PKG https://search.maven.org/remotecontent?filepath=fish/payara/extras/payara-micro/5.181/payara-micro-5.181.jar
-ENV PAYARA_VERSION 181
+ENV PAYARA_PKG https://search.maven.org/remotecontent?filepath=fish/payara/extras/payara-micro/5.182/payara-micro-5.182.jar
+ENV PAYARA_VERSION 182
 ENV PKG_FILE_NAME payara-micro.jar
 
 RUN wget --quiet -O $PAYARA_PATH/$PKG_FILE_NAME $PAYARA_PKG
