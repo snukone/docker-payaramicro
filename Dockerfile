@@ -17,8 +17,8 @@ USER payara
 WORKDIR ${PAYARA_HOME}
 
 # Default command to run
-ENTRYPOINT java -jar payara-micro.jar
-CMD "--deploymentDir ${DEPLOY_DIR}"
+ENTRYPOINT ["java", "-jar", "payara-micro.jar"]
+CMD ["--deploymentDir", "/opt/payara/deployments"]
 
 # Download specific
 ENV PAYARA_VERSION 5.183
