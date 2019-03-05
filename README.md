@@ -86,6 +86,43 @@ docker docker run -p 8080:8080 payara/micro \
  --additionalRepository https://172.17.0.10/content/repositories/snapshots
 ```
 
+### Define context root
+
+> Since Payara Micro 5.191
+
+The context root of the deployed application(s) is determined based on the file name of the artifact which is deployed. Form Payara Micro version 5.191 on, you can explicitly define the value of the context root using the `--contextroot` option, including deploying the application on the root itself ( `/`, specify **ROOT** as option value).  
+
+Some examples of how it can be used :
+
+```
+docker run -p 8080:8080 \
+ -v ~/payara-micro/applications:/opt/payara/deployments payara/micro  \
+ --deploymentDir /opt/payara/deployments  \
+ --contextroot myRoot
+```
+
+Deploys the (first) application within the mounted directory _~/payara-micro/applications_ under the root context _/myRoot_.
+
+```
+docker run -p 8080:8080 \
+ -v ~/payara-micro/applications:/opt/payara/deployments \
+ payara/micro \
+ --deploy /opt/payara/deployments/myapplication.war \
+ --contextroot ROOT
+```
+
+Deploys the _myapplication.war_ to the root.
+
+```
+FROM payara/micro
+
+COPY myapplication.war $DEPLOY_DIR
+
+CMD ["--deploymentDir", "/opt/payara/deployments", "--contextroot", "my"]
+```
+
+Creates a new Docker Image which results in the deployment of the _myapplication.war_ under the root context _/my_.
+
 # Details
 
 Payara Micro JAR file `payara-micro.jar` is located in the `/opt/payara/` directory. This directory is the default working directory of the docker image. The directory name is deliberately free of any versioning so that any scripts written to work with one version can be seamlessly migrated to the latest docker image.
