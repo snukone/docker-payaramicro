@@ -21,5 +21,6 @@ ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLim
 CMD ["--deploymentDir", "/opt/payara/deployments"]
 
 # Download specific
-ENV PAYARA_VERSION 5.183
-RUN wget --no-verbose -O ${PAYARA_HOME}/payara-micro.jar http://central.maven.org/maven2/fish/payara/extras/payara-micro/5.184/payara-micro-5.184.jar 
+ARG PAYARA_VERSION="5.184"
+ENV PAYARA_VERSION="$PAYARA_VERSION"
+RUN wget --no-verbose -O ${PAYARA_HOME}/payara-micro.jar http://central.maven.org/maven2/fish/payara/extras/payara-micro/${PAYARA_VERSION}/payara-micro-${PAYARA_VERSION}.jar
