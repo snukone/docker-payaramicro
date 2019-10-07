@@ -21,7 +21,7 @@ ENTRYPOINT ["java", "-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=90.0", "-j
 CMD ["--deploymentDir", "/opt/payara/deployments"]
 
 # Download specific
-ARG PAYARA_VERSION="5.193"
+ARG PAYARA_VERSION="5.193.1"
 ENV PAYARA_VERSION="$PAYARA_VERSION"
 RUN wget --no-verbose -O ${PAYARA_HOME}/payara-micro.jar http://central.maven.org/maven2/fish/payara/extras/payara-micro/${PAYARA_VERSION}/payara-micro-${PAYARA_VERSION}.jar
 
