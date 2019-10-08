@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk-alpine:8u212
+FROM azul/zulu-openjdk-alpine:8u222-jre
 
 # Default payara ports to expose
 EXPOSE 6900 8080
@@ -24,4 +24,3 @@ CMD ["--deploymentDir", "/opt/payara/deployments"]
 ARG PAYARA_VERSION="5.193.1"
 ENV PAYARA_VERSION="$PAYARA_VERSION"
 RUN wget --no-verbose -O ${PAYARA_HOME}/payara-micro.jar http://central.maven.org/maven2/fish/payara/extras/payara-micro/${PAYARA_VERSION}/payara-micro-${PAYARA_VERSION}.jar
-
