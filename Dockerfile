@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk-alpine:8u222-jre
+FROM azul/zulu-openjdk-alpine:11-jre
 
 # Default payara ports to expose
 EXPOSE 6900 8080
