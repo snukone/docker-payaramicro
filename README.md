@@ -3,7 +3,9 @@ Updated repository for Payara Dockerfiles. This repository is for [Payara Micro]
 # Supported tags and respective `Dockerfile` links
 
 -	[`latest`](https://github.com/payara/docker-payaramicro/blob/master/Dockerfile)
-  - contains latest released version of Payara Micro
+  - contains latest released version of Payara Micro based on JDK8
+-       [`jdk11`](https://github.com/payara/docker-payaramicro/blob/jdk11/Dockerfile)
+  - contains latest released version of Payara Micro based on JDK11
 -	[`prerelease`](https://github.com/payara/docker-payaramicro/blob/prerelease/Dockerfile)
   - contains nightly build of Payara Micro from the master branch (updated daily)
 -	[other tags](https://hub.docker.com/r/payara/micro/tags/) correspond to past releases of Payara Micro matched by short version number
