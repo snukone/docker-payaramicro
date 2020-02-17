@@ -1,14 +1,10 @@
+https://stackoverflow.com/questions/31257968/how-to-access-jmx-interface-in-docker-from-outside
+https://stackoverflow.com/questions/856881/how-to-activate-jmx-on-my-jvm-for-access-with-jconsole?noredirect=1
+
 Updated repository for Payara Dockerfiles. This repository is for [Payara Micro](http://www.payara.fish/payara_micro) runtime.
 
-# Supported tags and respective `Dockerfile` links
+# Fork zum Testen von JMX Monitoring :rocket:
 
--	[`latest`](https://github.com/payara/docker-payaramicro/blob/master/Dockerfile)
-  - contains latest released version of Payara Micro based on JDK8
--       [`jdk11`](https://github.com/payara/docker-payaramicro/blob/jdk11/Dockerfile)
-  - contains latest released version of Payara Micro based on JDK11
--	[`prerelease`](https://github.com/payara/docker-payaramicro/blob/prerelease/Dockerfile)
-  - contains nightly build of Payara Micro from the master branch (updated daily)
--	[other tags](https://hub.docker.com/r/payara/micro/tags/) correspond to past releases of Payara Micro matched by short version number
 
 # Usage
 
@@ -92,7 +88,7 @@ docker docker run -p 8080:8080 payara/micro \
 
 > Since Payara Micro 5.191
 
-The context root of the deployed application(s) is determined based on the file name of the artifact which is deployed. Form Payara Micro version 5.191 on, you can explicitly define the value of the context root using the `--contextroot` option, including deploying the application on the root itself ( `/`, specify **ROOT** as option value).  
+The context root of the deployed application(s) is determined based on the file name of the artifact which is deployed. Form Payara Micro version 5.191 on, you can explicitly define the value of the context root using the `--contextroot` option, including deploying the application on the root itself ( `/`, specify **ROOT** as option value).
 
 Some examples of how it can be used :
 
@@ -127,7 +123,7 @@ Creates a new Docker Image which results in the deployment of the _myapplication
 
 # Speeding up Boot by disabling the Data Grid
 
-By default the image has the Data Grid enabled and instances of Payara Micro will form a Data Grid if they can see each other over multicast. Typically this will occur on a single host. 
+By default the image has the Data Grid enabled and instances of Payara Micro will form a Data Grid if they can see each other over multicast. Typically this will occur on a single host.
 
 To speed up boot time the Data Grid can be disabled by modifying the CMD to add `--nocluster`
 
